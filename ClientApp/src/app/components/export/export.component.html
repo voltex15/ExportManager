@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Raporty</h1>
+  <div class="row">
+    <div class="col-4">
+      <mat-card>
+        <app-search-exports-form (newItemEvent)="exports"></app-search-exports-form>
+      </mat-card>
+    </div>
+    <div class="col-8">
+      <app-export-list [exports]=exports></app-export-list>
+    </div>
+  </div>
+</div>
+
+

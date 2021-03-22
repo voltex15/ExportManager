@@ -1,0 +1,69 @@
+<mat-card>
+
+  <div class="container">
+    <div [hidden]="submitted">
+      <h3>Wyszukiwarka</h3>
+      <form (ngSubmit)="onSubmit()" #searchExportForm="ngForm">
+
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Lokal</mat-label>
+            <mat-select class="form-control"
+                        id="local"
+                        [(ngModel)]="model.localId"
+                        name="localId"
+                        #localId="ngModel">
+              <mat-option *ngFor="let local of locals" [value]="local">
+                {{ local }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Data od</mat-label>
+            <input matInput
+                   type="date"
+                   class="form-control"
+                   id="dateFrom"
+                   [(ngModel)]="model.dateFrom"
+                   name="dateFrom"
+                   #dateFrom="ngModel">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Data do</mat-label>
+            <input matInput
+                   type="date"
+                   class="form-control"
+                   id="dateTo"
+                   [(ngModel)]="model.dateTo"
+                   name="dateTo"
+                   #dateTo="ngModel">
+          </mat-form-field>
+        </div>
+
+        <hr />
+
+        <button mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!searchExportForm.form.valid">
+          Zatwierdź
+        </button>
+
+        <button mat-raised-button
+                type="button"
+                (click)="newSearchExport(); searchExportForm.reset();">
+          Resetuj formularz
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+</mat-card>
